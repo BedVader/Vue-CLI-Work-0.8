@@ -1,0 +1,58 @@
+<script>
+export default {
+  emits: ["new-friends"],
+  data() {
+    return {
+      newName: "",
+      newPhone: "",
+      newEmail: "",
+      newIsFavorite: false,
+    };
+  },
+  methods: {
+    addFriend() {
+      this.$emit(
+        "new-friends",
+        this.newName,
+        this.newPhone,
+        this.newEmail,
+        this.newIsFavorite,
+      );
+      console.log("Up");
+    },
+  },
+};
+</script>
+
+<template>
+  <div>
+    <h2>Friend Form</h2>
+    <form @submit.prevent>
+      <div>
+        <label>Name</label>
+        <input type="text" v-model="newName" />
+      </div>
+
+      <div>
+        <label>Phone</label>
+        <input type="text" v-model="newPhone" />
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="text" v-model="newEmail" />
+      </div>
+
+      <div>
+        <label>Favorite</label>
+        <input type="checkbox" v-model="newIsFavorite" />
+      </div>
+
+      <div>
+        <button @click="addFriend()">Add Friend</button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<style></style>
